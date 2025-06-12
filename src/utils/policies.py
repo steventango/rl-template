@@ -34,7 +34,8 @@ def createEGreedy(
     epsilon: float,
     rng: np.random.Generator,
 ):
-    probs = lambda state: egreedy_probabilities(get_values(state), actions, epsilon)
+    def probs(state):
+        return egreedy_probabilities(get_values(state), actions, epsilon)
 
     return Policy(probs, rng)
 
