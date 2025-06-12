@@ -96,10 +96,10 @@ if not cmdline.debug:
 # start scheduling
 for path in missing:
     for g in group(missing[path], groupSize):
-        l = list(g)
-        print("scheduling:", path, l)
+        group_list = list(g)
+        print("scheduling:", path, group_list)
         # make sure to only request the number of CPU cores necessary
-        tasks = min([groupSize, len(l)])
+        tasks = min([groupSize, len(group_list)])
         par_tasks = max(int(tasks // slurm.sequential), 1)
         cores = par_tasks * threads
         sub = dataclasses.replace(slurm, cores=cores)
@@ -109,7 +109,7 @@ for path in missing:
         runner = f"{venv}/.venv/bin/python {cmdline.entry} -e {path} --save_path {cmdline.results} --checkpoint_path=$SCRATCH/checkpoints/{project_name} -i "
 
         # generate the gnu-parallel command for dispatching to many CPUs across server nodes
-        parallel = Slurm.buildParallel(runner, l, sub)
+        parallel = Slurm.buildParallel(runner, group_list, sub)
 
         # generate the bash script which will be scheduled
         script = getJobScript(parallel)

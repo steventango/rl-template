@@ -8,8 +8,8 @@ def partition(it: Iterable[Tuple[K, T]]) -> Dict[K, List[T]]:
     out: Dict[K, List[T]] = {}
 
     for k, t in it:
-        l = out.get(k, [])
-        l.append(t)
-        out[k] = l
+        group_list = out.get(k, [])
+        group_list.append(t)
+        out[k] = group_list
 
     return out
