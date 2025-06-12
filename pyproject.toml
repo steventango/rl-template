@@ -6,6 +6,7 @@ name = 'rl-template'
 version = '0.0.0'
 description = ''
 authors = [
+    {name = 'Steven Tang', email = 'stang5@ualberta.ca'},
     {name = 'Parham Panahi', email = 'parham1@ualberta.ca'},
     {name = 'Andy Patterson', email = 'ap3@ualberta.ca'},
     {name = 'Niko Yasui', email = 'yasuiniko@gmail.com'}
