@@ -55,6 +55,8 @@ dev = [
     'pyright',
     'commitizen',
     'pre-commit',
+    'pytest',
+    'pytest-cov'
 ]
 
 [tool]
